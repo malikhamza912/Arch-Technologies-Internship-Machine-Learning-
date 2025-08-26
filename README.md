@@ -1,109 +1,53 @@
-🧠 Machine Learning Projects
+This repository contains two core Machine Learning tasks implemented in Python:
 
-This repository contains two fundamental Machine Learning projects implemented in Python:
+✅ Spam Email Detection – Classify messages as Spam or Ham using Naive Bayes
+✅ MNIST Digit Recognition – Recognize handwritten digits using Neural Networks
 
-Spam Email Detection – Classify emails as Spam or Ham using Naive Bayes.
+📌 Projects Overview
+1. Spam Email Detection
 
-MNIST Digit Recognition – Recognize handwritten digits (0-9) using Neural Networks.
+Goal: Detect whether an email is spam or not using text classification.
 
-📂 Project Structure
-📦 Arch-Technologies-Internship-Machine-Learning
-├── 📁 [Task 1] Spam Email Detection
-│   ├── spamEmailDetection.py
-│   ├── email.csv
-|
-├── 📁 [Task 2] 
-│   ├── digitRecognition.py
-│   
-└── README.md
+Algorithm: Multinomial Naive Bayes
 
-✅ 1. Spam Email Detection
+Feature Extraction: CountVectorizer
 
-Goal: Classify text messages as spam or ham.
+Accuracy Achieved: ~97.9%
 
-Dataset
+Key Steps:
+✔ Load & clean dataset
+✔ Map labels (spam=1, ham=0)
+✔ Convert text to feature vectors
+✔ Train & evaluate model
 
-CSV file: email.csv
+Sample Confusion Matrix:
 
-Columns:
-
-Category → spam/ham
-
-Message → email text
-
-Steps
-
-Preprocess labels (spam=1, ham=0).
-
-Split data into train/test.
-
-Convert text to feature vectors using:
-
-CountVectorizer
-
-(Optionally TF-IDF)
-
-Train a Multinomial Naive Bayes model.
-
-Evaluate using accuracy and confusion matrix.
-
-Sample Output
-Accuracy: 97.9%
-Confusion Matrix:
 [[946   7]
  [ 16 146]]
 
-Code Snippet
-vectorizer = CountVectorizer()
-x_trainVectors = vectorizer.fit_transform(x_train)
-x_testVectors = vectorizer.transform(x_test)
-
-model = MultinomialNB()
-model.fit(x_trainVectors, y_train)
-
-✅ 2. MNIST Digit Recognition
+2. MNIST Digit Recognition
 
 Goal: Classify handwritten digits (0–9) from the MNIST dataset.
 
-Dataset
+Model: Neural Network (Dense layers)
 
-Built-in Keras MNIST dataset.
+Accuracy Achieved: ~97%
 
-60,000 training images, 10,000 test images.
+Architecture:
 
-Model
-
-Neural Network (Dense):
-
-Flatten(28×28) → Dense(128, relu) → Dense(10, softmax)
-
-(Optional) Improve with CNN for better accuracy.
-
-Steps
-
-Normalize pixel values (0–1).
-
-Build & compile model:
-
-model = keras.Sequential([
-    layers.Flatten(input_shape=(28,28)),
-    layers.Dense(128, activation='relu'),
-    layers.Dense(10, activation='softmax')
-])
+Flatten(28x28) → Dense(128, ReLU) → Dense(10, Softmax)
 
 
-Train & evaluate:
+Key Steps:
+✔ Normalize image data
+✔ Build & compile the model
+✔ Train and evaluate
 
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-model.fit(x_train, y_train, epochs=5)
-test_loss, test_acc = model.evaluate(x_test, y_test)
-
-
-Achieved Accuracy: ~97%.
-
-🛠 Tools & Libraries
+🛠 Technologies Used
 
 Python 3.10+
+
+Libraries:
 
 pandas, numpy
 
@@ -111,29 +55,24 @@ scikit-learn
 
 tensorflow / keras
 
-matplotlib (optional for visualization)
-
-▶️ How to Run
-
-Clone the repository:
-
+▶ How to Run
+# Clone the repository
 git clone https://github.com/your-username/Machine-Learning-Projects.git
+cd Machine-Learning-Projects
 
-
-Install dependencies:
-
+# Install dependencies
 pip install -r requirements.txt
 
+# Run Spam Detection
+python spam_email_detection.py
 
-Run each script:
-
-python spamEmailDetection.py
-python mnistDigitRecognition.py
+# Run MNIST Digit Recognition
+python mnist_digit_recognition.py
 
 📈 Future Enhancements
 
-Add TF-IDF for Spam Detection.
+Implement TF-IDF in spam detection
 
-Implement CNN for MNIST for ~99% accuracy.
+Add CNN for MNIST to achieve 99%+ accuracy
 
-Deploy models with Flask / FastAPI.
+Deploy models via Flask / FastAPI
